@@ -6,6 +6,8 @@ import constants
 import colors
 import arrow
 
+import demo_arrow_spawn
+
 
 mainClock = pygame.time.Clock()
 pygame.init()
@@ -15,6 +17,7 @@ pygame.display.set_caption("Rhythm")
 
 
 def main():
+    ticker = 0
 
     up_arrows = []
     down_arrows = []
@@ -31,21 +34,16 @@ def main():
             if event.type == KEYDOWN:
                 match event.key:
                     case pygame.K_UP:
-                        print("New arrow: up")
-                        up_arrows.append(arrow.Arrow("up"))
+                        pass
                     case pygame.K_DOWN:
-                        print("New arrow: down")
-                        down_arrows.append(arrow.Arrow("down"))
+                        pass
                     case pygame.K_LEFT:
-                        print("New arrow: left")
-                        left_arrows.append(arrow.Arrow("left"))
+                        pass
                     case pygame.K_RIGHT:
-                        print("New arrow: right")
-                        right_arrows.append(arrow.Arrow("right"))
-                    
-                    case pygame.K_SPACE:
-                        print(up_arrows)
-
+                        pass
+        
+        # Spawn arrows at regular intervals
+        ticker = demo_arrow_spawn.spawn_tick(up_arrows, down_arrows, left_arrows, right_arrows, ticker)
         
         for arrow_list in [up_arrows, down_arrows, left_arrows, right_arrows]:
             for arrow_instance in arrow_list:
