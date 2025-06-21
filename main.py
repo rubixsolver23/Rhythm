@@ -23,3 +23,6 @@ def main():
         windowSurface.fill(colors.WHITE)  # Clear the screen with black
         pygame.display.update()  # Update the display
         mainClock.tick(60)  # Limit to 60 frames per second
+
+
+main()
