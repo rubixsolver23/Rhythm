@@ -33,6 +33,15 @@ def main():
                     case pygame.K_UP:
                         print("New arrow: up")
                         up_arrows.append(arrow.Arrow("up"))
+                    case pygame.K_DOWN:
+                        print("New arrow: down")
+                        down_arrows.append(arrow.Arrow("down"))
+                    case pygame.K_LEFT:
+                        print("New arrow: left")
+                        left_arrows.append(arrow.Arrow("left"))
+                    case pygame.K_RIGHT:
+                        print("New arrow: right")
+                        right_arrows.append(arrow.Arrow("right"))
                     
                     case pygame.K_SPACE:
                         print(up_arrows)
@@ -54,7 +63,7 @@ def main():
 
         for arrow_list in [up_arrows, down_arrows, left_arrows, right_arrows]:
             for arrow_instance in arrow_list:
-                pygame.draw.rect(windowSurface, colors.BLACK, arrow_instance.rect)  # Draw the arrow as a rectangle for now
+                windowSurface.blit(arrow_instance.img, arrow_instance.rect)
         
         pygame.display.update()  # Update the display
         mainClock.tick(60)  # Limit to 60 frames per second

@@ -5,14 +5,24 @@ import constants
 class Arrow:
     def __init__(self, direction="up"):
         self.direction = direction
-        self.img = None  # Placeholder for the image, to be set later
-        self.rect = pygame.Rect(0, 0, 20, 20)
-        self.height = 20 # placeholder for the height of the arrow
+        self.img = pygame.image.load(f"IMAGE/arrow_{direction}.png").convert_alpha()
+        self.img = pygame.transform.scale(self.img, (64, 64))
+        self.rect = self.img.get_rect()
+
+        self.height = self.rect.height
 
         self.y = -self.height/2
         self.speed = 200  # Speed of the arrow falling down (pixels per second)
 
-        self.rect.center = (constants.WINDOWWIDTH // 2, self.y)  # Center the arrow horizontally
+        match direction:
+            case "up":
+                self.rect.centerx = constants.WINDOWWIDTH * (5/11)
+            case "down":
+                self.rect.centerx = constants.WINDOWWIDTH * (6/11)
+            case "left":
+                self.rect.centerx = constants.WINDOWWIDTH * (4/11)
+            case "right":
+                self.rect.centerx = constants.WINDOWWIDTH * (7/11)
 
 
     def tick(self, mainClock):
