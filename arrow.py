@@ -3,6 +3,7 @@ from pygame.locals import *
 import constants
 
 class Arrow:
+    ARROW_HEIGHT = 64
     def __init__(self, direction="up"):
         self.direction = direction
         self.img = pygame.image.load(f"IMAGE/arrow_{direction}.png").convert_alpha()
