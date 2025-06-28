@@ -13,7 +13,7 @@ class Arrow:
         self.height = self.rect.height
 
         self.y = -self.height/2
-        self.speed = 5  # Speed of the arrow falling down (pixels per frame)
+        self.speed = 6  # Speed of the arrow falling down (pixels per frame)
 
         match direction:
             case "up":
