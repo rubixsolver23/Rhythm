@@ -101,7 +101,8 @@ def main():
                     print("Up Miss")
                     score -= 1
             else:
-                pass
+                print("Up Miss")
+                score -= 1
             up_pressed = 0
         
         if down_pressed > 0:
@@ -123,7 +124,8 @@ def main():
                     print("Down Miss")
                     score -= 1
             else:
-                pass
+                print("Down Miss")
+                score -= 1
             down_pressed = 0
 
         if left_pressed > 0:
@@ -145,7 +147,8 @@ def main():
                     print("Left Miss")
                     score -= 1
             else:
-                pass
+                print("Left Miss")
+                score -= 1
             left_pressed = 0
         
         if right_pressed > 0:
@@ -167,7 +170,8 @@ def main():
                     print("Right Miss")
                     score -= 1
             else:
-                pass
+                print("Right Miss")
+                score -= 1
             right_pressed = 0
         
         # Update score text
@@ -175,12 +179,14 @@ def main():
         
         # Garbage collection for arrows that have gone off the screen
         missed_arrows = [arrow_instance for arrow_instance in up_arrows + down_arrows + left_arrows + right_arrows if arrow_instance.rect.top > constants.STRIP_Y + constants.OK_BUFFER]
+        score -= len(missed_arrows) # Deduct score for missed arrows
+
         up_arrows = [arrow_instance for arrow_instance in up_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         down_arrows = [arrow_instance for arrow_instance in down_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         left_arrows = [arrow_instance for arrow_instance in left_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         right_arrows = [arrow_instance for arrow_instance in right_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
 
-        score -= len(missed_arrows) # Deduct score for missed arrows
+        
 
 
         # Draw the screen
