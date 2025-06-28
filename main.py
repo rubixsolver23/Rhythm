@@ -99,6 +99,7 @@ def main():
                     score += 2
                 else:
                     print("Up Miss")
+                    score -= 1
             else:
                 pass
             up_pressed = 0
@@ -120,6 +121,7 @@ def main():
                     score += 2
                 else:
                     print("Down Miss")
+                    score -= 1
             else:
                 pass
             down_pressed = 0
@@ -141,6 +143,7 @@ def main():
                     score += 2
                 else:
                     print("Left Miss")
+                    score -= 1
             else:
                 pass
             left_pressed = 0
@@ -162,6 +165,7 @@ def main():
                     score += 2
                 else:
                     print("Right Miss")
+                    score -= 1
             else:
                 pass
             right_pressed = 0
@@ -183,7 +187,7 @@ def main():
         windowSurface.blit(score_txt, (10, 10))
 
         # Draw timing strips
-        timing_strip_obj.draw(windowSurface)
+        #timing_strip_obj.draw(windowSurface)
 
         # Draw the arrow boxes
         arrow_boxes.draw_boxes(windowSurface)
