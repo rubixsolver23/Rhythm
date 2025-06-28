@@ -184,11 +184,9 @@ def main():
 
         # Draw timing strips
         timing_strip_obj.draw(windowSurface)
-        
+
         # Draw the arrow boxes
         arrow_boxes.draw_boxes(windowSurface)
-
-
 
         # Draw each arrow
         for arrow_list in [up_arrows, down_arrows, left_arrows, right_arrows]:
