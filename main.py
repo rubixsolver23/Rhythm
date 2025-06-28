@@ -39,6 +39,10 @@ def main():
     left_pressed = 0
     right_pressed = 0
 
+    # Score variables
+    score = 0
+    score_txt = pygame.font.Font(None, 36).render(f"Score: {score}", True, colors.BLACK)
+
     while True:
 
         # Reset inputs
@@ -82,12 +86,15 @@ def main():
                 if abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.PERFECT_BUFFER:
                     print("Up Perfect")
                     up_arrows.pop(0)
+                    score += 10
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.GOOD_BUFFER:
                     print("Up Good")
                     up_arrows.pop(0)
+                    score += 5
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.OK_BUFFER:
                     print("Up OK")
                     up_arrows.pop(0)
+                    score += 2
                 else:
                     print("Up Miss")
             else:
@@ -100,12 +107,15 @@ def main():
                 if abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.PERFECT_BUFFER:
                     print("Down Perfect")
                     down_arrows.pop(0)
+                    score += 10
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.GOOD_BUFFER:
                     print("Down Good")
                     down_arrows.pop(0)
+                    score += 5
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.OK_BUFFER:
                     print("Down OK")
                     down_arrows.pop(0)
+                    score += 2
                 else:
                     print("Down Miss")
             else:
@@ -118,12 +128,15 @@ def main():
                 if abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.PERFECT_BUFFER:
                     print("Left Perfect")
                     left_arrows.pop(0)
+                    score += 10
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.GOOD_BUFFER:
                     print("Left Good")
                     left_arrows.pop(0)
+                    score += 5
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.OK_BUFFER:
                     print("Left OK")
                     left_arrows.pop(0)
+                    score += 2
                 else:
                     print("Left Miss")
             else:
@@ -136,17 +149,23 @@ def main():
                 if abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.PERFECT_BUFFER:
                     print("Right Perfect")
                     right_arrows.pop(0)
+                    score += 10
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.GOOD_BUFFER:
                     print("Right Good")
                     right_arrows.pop(0)
+                    score += 5
                 elif abs(arrow_instance.y - timing_strip_obj.strip_location) < constants.OK_BUFFER:
                     print("Right OK")
                     right_arrows.pop(0)
+                    score += 2
                 else:
                     print("Right Miss")
             else:
                 pass
             right_pressed = 0
+        
+        # Update score text
+        score_txt = pygame.font.Font(None, 36).render(f"Score: {score}", True, colors.BLACK)
         
         # Garbage collection for arrows that have gone off the screen
         up_arrows = [arrow_instance for arrow_instance in up_arrows if arrow_instance.rect.top < constants.WINDOWHEIGHT]
@@ -157,6 +176,9 @@ def main():
         
         # Draw the screen
         windowSurface.fill(colors.WHITE)
+
+        # Draw the score text
+        windowSurface.blit(score_txt, (10, 10))
 
         # Draw timing strips
         timing_strip_obj.draw(windowSurface)
