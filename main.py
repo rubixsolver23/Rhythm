@@ -174,10 +174,13 @@ def main():
         score_txt = pygame.font.Font(None, 36).render(f"Score: {score}", True, colors.BLACK)
         
         # Garbage collection for arrows that have gone off the screen
+        missed_arrows = [arrow_instance for arrow_instance in up_arrows + down_arrows + left_arrows + right_arrows if arrow_instance.rect.top > constants.STRIP_Y + constants.OK_BUFFER]
         up_arrows = [arrow_instance for arrow_instance in up_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         down_arrows = [arrow_instance for arrow_instance in down_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         left_arrows = [arrow_instance for arrow_instance in left_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
         right_arrows = [arrow_instance for arrow_instance in right_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
+
+        score -= len(missed_arrows) # Deduct score for missed arrows
 
 
         # Draw the screen
