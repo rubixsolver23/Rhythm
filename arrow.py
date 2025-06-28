@@ -6,7 +6,7 @@ class Arrow:
     ARROW_HEIGHT = 64
     def __init__(self, direction="up"):
         self.direction = direction
-        self.img = pygame.image.load(f"IMAGE/arrow_{direction}.png").convert_alpha()
+        self.img = pygame.image.load(f"IMAGE/arrow_with_box_{direction}.png").convert_alpha()
         self.img = pygame.transform.scale(self.img, (64, 64))
         self.rect = self.img.get_rect()
 
@@ -17,13 +17,13 @@ class Arrow:
 
         match direction:
             case "up":
-                self.rect.centerx = constants.WINDOWWIDTH * (5/11)
+                self.rect.centerx = constants.WINDOWWIDTH * (3/7)
             case "down":
-                self.rect.centerx = constants.WINDOWWIDTH * (6/11)
+                self.rect.centerx = constants.WINDOWWIDTH * (4/7)
             case "left":
-                self.rect.centerx = constants.WINDOWWIDTH * (4/11)
+                self.rect.centerx = constants.WINDOWWIDTH * (2/7)
             case "right":
-                self.rect.centerx = constants.WINDOWWIDTH * (7/11)
+                self.rect.centerx = constants.WINDOWWIDTH * (5/7)
 
 
     def tick(self, mainClock):
@@ -44,9 +44,9 @@ class ArrowBoxes:
     
     def draw_boxes(self, windowSurface):
         # Draw the boxes for each arrow direction
-        windowSurface.blit(self.up_box, (constants.WINDOWWIDTH * (5/11) - 32, constants.STRIP_Y - 32))
-        windowSurface.blit(self.down_box, (constants.WINDOWWIDTH * (6/11) - 32, constants.STRIP_Y - 32))
-        windowSurface.blit(self.left_box, (constants.WINDOWWIDTH * (4/11) - 32, constants.STRIP_Y - 32))
-        windowSurface.blit(self.right_box, (constants.WINDOWWIDTH * (7/11) - 32, constants.STRIP_Y - 32)    )
+        windowSurface.blit(self.up_box, (constants.WINDOWWIDTH * (3/7) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.down_box, (constants.WINDOWWIDTH * (4/7) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.left_box, (constants.WINDOWWIDTH * (2/7) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.right_box, (constants.WINDOWWIDTH * (5/7) - 32, constants.STRIP_Y - 32))
 
     
