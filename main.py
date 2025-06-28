@@ -174,12 +174,12 @@ def main():
         score_txt = pygame.font.Font(None, 36).render(f"Score: {score}", True, colors.BLACK)
         
         # Garbage collection for arrows that have gone off the screen
-        up_arrows = [arrow_instance for arrow_instance in up_arrows if arrow_instance.rect.top < constants.WINDOWHEIGHT]
-        down_arrows = [arrow_instance for arrow_instance in down_arrows if arrow_instance.rect.top < constants.WINDOWHEIGHT]
-        left_arrows = [arrow_instance for arrow_instance in left_arrows if arrow_instance.rect.top < constants.WINDOWHEIGHT]
-        right_arrows = [arrow_instance for arrow_instance in right_arrows if arrow_instance.rect.top < constants.WINDOWHEIGHT]
-                
-        
+        up_arrows = [arrow_instance for arrow_instance in up_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
+        down_arrows = [arrow_instance for arrow_instance in down_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
+        left_arrows = [arrow_instance for arrow_instance in left_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
+        right_arrows = [arrow_instance for arrow_instance in right_arrows if arrow_instance.rect.top < constants.STRIP_Y + constants.OK_BUFFER]
+
+
         # Draw the screen
         windowSurface.fill(colors.WHITE)
 

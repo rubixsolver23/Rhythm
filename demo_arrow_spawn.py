@@ -5,7 +5,7 @@ import arrow
 def spawn_tick(up_arrows, down_arrows, left_arrows, right_arrows, tickerIn):
     ticker = tickerIn
     ticker += 1
-    if ticker % 60 == 0:  # Spawn an arrow every 60 ticks
+    if ticker % 20 == 0:  # Spawn an arrow every 20 ticks
         direction = random.choice(["up", "down", "left", "right"])
         match direction:
             case "up":
