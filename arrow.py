@@ -31,4 +31,22 @@ class Arrow:
         self.y = round(self.y)
         self.rect.centery = self.y
 
+class ArrowBoxes:
+    def __init__(self):
+        self.up_box = pygame.image.load("IMAGE/ArrowBox.png").convert_alpha()
+        self.up_box = pygame.transform.scale(self.up_box, (64, 64))
+        self.down_box = pygame.image.load("IMAGE/ArrowBox.png").convert_alpha()
+        self.down_box = pygame.transform.scale(self.down_box, (64, 64))
+        self.left_box = pygame.image.load("IMAGE/ArrowBox.png").convert_alpha()
+        self.left_box = pygame.transform.scale(self.left_box, (64, 64))
+        self.right_box = pygame.image.load("IMAGE/ArrowBox.png").convert_alpha()
+        self.right_box = pygame.transform.scale(self.right_box, (64, 64))
+    
+    def draw_boxes(self, windowSurface):
+        # Draw the boxes for each arrow direction
+        windowSurface.blit(self.up_box, (constants.WINDOWWIDTH * (5/11) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.down_box, (constants.WINDOWWIDTH * (6/11) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.left_box, (constants.WINDOWWIDTH * (4/11) - 32, constants.STRIP_Y - 32))
+        windowSurface.blit(self.right_box, (constants.WINDOWWIDTH * (7/11) - 32, constants.STRIP_Y - 32)    )
 
+    
